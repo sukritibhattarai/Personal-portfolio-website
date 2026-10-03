@@ -41,44 +41,6 @@
     });
   }
 
-  var profileInput = document.querySelector("#profile-photo-input");
-  var profileImage = document.querySelector("#profile-photo");
-  var profileMonogram = document.querySelector(".profile-monogram");
-  var profileReset = document.querySelector("#profile-photo-reset");
-  var profileStatus = document.querySelector("#profile-photo-status");
-  if (profileInput && profileImage && profileMonogram && profileReset) {
-    var previewUrl = "";
-    profileInput.addEventListener("change", function () {
-      var file = profileInput.files && profileInput.files[0];
-      if (!file) return;
-      if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
-        profileStatus.textContent = "Please choose a JPG, PNG, or WebP photo.";
-        return;
-      }
-      if (file.size > 8 * 1024 * 1024) {
-        profileStatus.textContent = "Please choose a photo smaller than 8 MB.";
-        return;
-      }
-      if (previewUrl) URL.revokeObjectURL(previewUrl);
-      previewUrl = URL.createObjectURL(file);
-      profileImage.src = previewUrl;
-      profileImage.hidden = false;
-      profileMonogram.hidden = true;
-      profileReset.hidden = false;
-      profileStatus.textContent = "Your photo preview is ready. Send this photo in chat to publish it for every visitor.";
-    });
-    profileReset.addEventListener("click", function () {
-      if (previewUrl) URL.revokeObjectURL(previewUrl);
-      previewUrl = "";
-      profileInput.value = "";
-      profileImage.removeAttribute("src");
-      profileImage.hidden = true;
-      profileMonogram.hidden = false;
-      profileReset.hidden = true;
-      profileStatus.textContent = "Preview only on this device. Send the final photo to publish it for everyone.";
-    });
-  }
-
   var year = document.querySelector("[data-year]");
   if (year) year.textContent = new Date().getFullYear();
 
