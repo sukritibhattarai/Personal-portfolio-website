@@ -1,6 +1,6 @@
 (function () {
   var config = {
-    email: "hello@aurasukriti.digital",
+    email: "bhattaraisukriti27@gmail.com",
     bookingUrl: ""
   };
 
