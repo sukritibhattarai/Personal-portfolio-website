@@ -185,7 +185,9 @@ h3 { font-size: 1.28rem; letter-spacing: -.02em; }
 .profile-caption h3 { margin-bottom: 5px; }
 .profile-caption p { margin: 0; color: var(--muted); }
 .profile-upload { margin: 14px 10px 4px; padding: 16px; background: #f4f7ff; border: 1px dashed #9fb9e7; border-radius: 14px; }
-.profile-upload-button { display: inline-flex; cursor: pointer; }
+.profile-upload-label { display: block; margin-bottom: 9px; color: var(--ink); font-weight: 800; }
+.profile-file-input { display: block; width: 100%; min-height: 48px; padding: 8px; color: var(--ink); background: var(--white); border: 1px solid #9fb9e7; border-radius: 10px; font: inherit; cursor: pointer; }
+.profile-file-input::file-selector-button { min-height: 34px; margin-right: 10px; padding: 7px 12px; color: var(--white); background: var(--ink); border: 0; border-radius: 8px; font: inherit; font-weight: 800; cursor: pointer; }
 .profile-upload p { margin: 12px 0 0; color: var(--muted); font-size: .82rem; line-height: 1.5; }
 .profile-reset { margin-left: 10px; padding: 9px 0; color: #9f2b52; background: transparent; border: 0; font-weight: 800; cursor: pointer; }
 .value-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; overflow: hidden; background: rgba(255,255,255,.13); border: 1px solid rgba(255,255,255,.13); border-radius: var(--radius); }

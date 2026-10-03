@@ -41,15 +41,11 @@
     });
   }
 
-  var profileEditor = document.querySelector("[data-profile-editor]");
   var profileInput = document.querySelector("#profile-photo-input");
   var profileImage = document.querySelector("#profile-photo");
   var profileMonogram = document.querySelector(".profile-monogram");
   var profileReset = document.querySelector("#profile-photo-reset");
   var profileStatus = document.querySelector("#profile-photo-status");
-  if (profileEditor && new URLSearchParams(window.location.search).get("edit-profile") === "1") {
-    profileEditor.hidden = false;
-  }
   if (profileInput && profileImage && profileMonogram && profileReset) {
     var previewUrl = "";
     profileInput.addEventListener("change", function () {
