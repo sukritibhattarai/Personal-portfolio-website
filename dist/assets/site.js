@@ -1,6 +1,5 @@
 (function () {
   var config = {
-    email: "bhattaraisukriti27@gmail.com",
     bookingUrl: ""
   };
 
@@ -36,19 +35,51 @@
   if (form) {
     form.addEventListener("submit", function (event) {
       event.preventDefault();
-      var data = new FormData(form);
-      var subject = encodeURIComponent("Free consultation request from " + data.get("name"));
-      var body = encodeURIComponent(
-        "Name: " + data.get("name") + "\n" +
-        "Email: " + data.get("email") + "\n" +
-        "Business: " + data.get("business") + "\n" +
-        "Primary goal: " + data.get("goal") + "\n\n" +
-        "About the business:\n" + data.get("message")
-      );
       var status = form.querySelector(".form-status");
-      status.textContent = "Your email app is opening with the consultation details ready to send.";
+      status.textContent = "Direct contact details are being updated. Please check back soon.";
       status.classList.add("show");
-      window.location.href = "mailto:" + config.email + "?subject=" + subject + "&body=" + body;
+    });
+  }
+
+  var profileEditor = document.querySelector("[data-profile-editor]");
+  var profileInput = document.querySelector("#profile-photo-input");
+  var profileImage = document.querySelector("#profile-photo");
+  var profileMonogram = document.querySelector(".profile-monogram");
+  var profileReset = document.querySelector("#profile-photo-reset");
+  var profileStatus = document.querySelector("#profile-photo-status");
+  if (profileEditor && new URLSearchParams(window.location.search).get("edit-profile") === "1") {
+    profileEditor.hidden = false;
+  }
+  if (profileInput && profileImage && profileMonogram && profileReset) {
+    var previewUrl = "";
+    profileInput.addEventListener("change", function () {
+      var file = profileInput.files && profileInput.files[0];
+      if (!file) return;
+      if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
+        profileStatus.textContent = "Please choose a JPG, PNG, or WebP photo.";
+        return;
+      }
+      if (file.size > 8 * 1024 * 1024) {
+        profileStatus.textContent = "Please choose a photo smaller than 8 MB.";
+        return;
+      }
+      if (previewUrl) URL.revokeObjectURL(previewUrl);
+      previewUrl = URL.createObjectURL(file);
+      profileImage.src = previewUrl;
+      profileImage.hidden = false;
+      profileMonogram.hidden = true;
+      profileReset.hidden = false;
+      profileStatus.textContent = "Your photo preview is ready. Send this photo in chat to publish it for every visitor.";
+    });
+    profileReset.addEventListener("click", function () {
+      if (previewUrl) URL.revokeObjectURL(previewUrl);
+      previewUrl = "";
+      profileInput.value = "";
+      profileImage.removeAttribute("src");
+      profileImage.hidden = true;
+      profileMonogram.hidden = false;
+      profileReset.hidden = true;
+      profileStatus.textContent = "Preview only on this device. Send the final photo to publish it for everyone.";
     });
   }
 

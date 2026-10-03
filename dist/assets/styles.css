@@ -170,13 +170,24 @@ h3 { font-size: 1.28rem; letter-spacing: -.02em; }
 .service-card-grid .card { min-height: 270px; }
 .profile-layout { display: grid; grid-template-columns: .82fr 1.18fr; gap: 76px; align-items: center; }
 .profile-card { padding: 18px; background: var(--white); border: 1px solid var(--line); border-radius: 32px; box-shadow: var(--shadow); }
-.profile-portrait { position: relative; aspect-ratio: 4 / 5; display: grid; place-items: center; overflow: hidden; color: var(--white); background: radial-gradient(circle at 68% 20%, rgba(67,215,255,.35), transparent 27%), linear-gradient(150deg, var(--ink-2), var(--ink) 62%, #0c3d57); border-radius: 22px; }
-.profile-portrait::after { content: ""; position: absolute; width: 78%; aspect-ratio: 1; border: 1px solid rgba(67,215,255,.3); border-radius: 50%; transform: translate(30%, 40%); }
+.profile-visual { position: relative; min-height: 520px; display: grid; place-items: center; overflow: hidden; background: linear-gradient(145deg, #f7f9ff, #eef4ff); border-radius: 22px; isolation: isolate; }
+.profile-orbit { position: absolute; width: 86%; aspect-ratio: 1; border: 1px solid rgba(39,101,205,.16); border-radius: 50%; transform: rotate(-12deg); }
+.profile-orbit::before, .profile-orbit::after { content: ""; position: absolute; inset: 8% -5%; border: 1px solid rgba(39,101,205,.11); border-radius: 50%; transform: rotate(24deg); }
+.profile-orbit::after { inset: -5% 13%; transform: rotate(-35deg); }
+.profile-portrait { position: relative; z-index: 2; width: min(72%, 300px); aspect-ratio: 4 / 5; display: grid; place-items: center; overflow: hidden; color: var(--white); background: radial-gradient(circle at 68% 20%, rgba(67,215,255,.35), transparent 27%), linear-gradient(150deg, var(--ink-2), var(--ink) 62%, #0c3d57); border-radius: 140px 140px 26px 26px; box-shadow: 0 28px 60px rgba(7,26,47,.2); }
 .profile-monogram { position: relative; z-index: 1; font-family: "Manrope", sans-serif; font-size: clamp(4rem, 9vw, 7rem); font-weight: 800; letter-spacing: -.08em; }
-.profile-photo { width: 100%; height: 100%; object-fit: cover; }
+.profile-photo { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+.profile-label { position: absolute; z-index: 3; padding: 10px 14px; color: var(--ink); background: rgba(255,255,255,.95); border: 1px solid rgba(7,26,47,.08); border-radius: 8px; box-shadow: 0 10px 28px rgba(7,26,47,.1); font-size: .72rem; font-weight: 800; }
+.profile-label-top { top: 24%; right: 3%; }
+.profile-label-bottom { bottom: 16%; left: 2%; }
+.profile-index { position: absolute; right: 7%; bottom: 5%; color: rgba(7,26,47,.45); font-size: .66rem; font-weight: 800; letter-spacing: .16em; }
 .profile-caption { padding: 22px 10px 8px; }
 .profile-caption h3 { margin-bottom: 5px; }
 .profile-caption p { margin: 0; color: var(--muted); }
+.profile-upload { margin: 14px 10px 4px; padding: 16px; background: #f4f7ff; border: 1px dashed #9fb9e7; border-radius: 14px; }
+.profile-upload-button { display: inline-flex; cursor: pointer; }
+.profile-upload p { margin: 12px 0 0; color: var(--muted); font-size: .82rem; line-height: 1.5; }
+.profile-reset { margin-left: 10px; padding: 9px 0; color: #9f2b52; background: transparent; border: 0; font-weight: 800; cursor: pointer; }
 .value-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; overflow: hidden; background: rgba(255,255,255,.13); border: 1px solid rgba(255,255,255,.13); border-radius: var(--radius); }
 .value-card { min-height: 230px; padding: 30px; background: var(--ink); }
 .value-card span { display: block; margin-bottom: 45px; color: var(--coral); font-size: .8rem; font-weight: 800; letter-spacing: .1em; }
@@ -277,6 +288,9 @@ h3 { font-size: 1.28rem; letter-spacing: -.02em; }
   .footer-bottom { flex-direction: column; }
   .hero-long { font-size: clamp(2.45rem, 12vw, 3.75rem); }
   .profile-card { max-width: 430px; }
+  .profile-visual { min-height: 440px; }
+  .profile-portrait { width: min(70%, 260px); }
+  .profile-label { padding: 8px 10px; font-size: .66rem; }
   .flow-step, .value-card { min-height: auto; }
   .flow-step span, .value-card span { margin-bottom: 24px; }
 }
