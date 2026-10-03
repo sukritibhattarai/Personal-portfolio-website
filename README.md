@@ -1,4 +1,4 @@
-# Aurasukriti.digital
+# Sukriti Digital
 
 A responsive five-page portfolio website for Sukriti Bhattarai.
 
