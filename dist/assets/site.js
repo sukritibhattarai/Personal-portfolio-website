@@ -33,11 +33,19 @@
 
   var form = document.querySelector("#consultation-form");
   if (form) {
-    form.addEventListener("submit", function (event) {
-      event.preventDefault();
-      var status = form.querySelector(".form-status");
-      status.textContent = "Direct contact details are being updated. Please check back soon.";
+    var status = form.querySelector(".form-status");
+    var params = new URLSearchParams(window.location.search);
+    if (params.get("submitted") === "true") {
+      status.textContent = "Thank you! Your consultation request has been sent. I’ll reply to your email as soon as possible.";
       status.classList.add("show");
+      status.focus();
+    }
+
+    form.addEventListener("submit", function () {
+      var button = form.querySelector('button[type="submit"]');
+      button.disabled = true;
+      button.textContent = "Sending your request…";
+      form.setAttribute("aria-busy", "true");
     });
   }
 
