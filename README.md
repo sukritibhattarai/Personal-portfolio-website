@@ -10,17 +10,41 @@ PowerShell example: python -m http.server 4173 --directory dist
 
 Then open http://localhost:4173.
 
+## Publish to GitHub Pages
+
+The workflow in `.github/workflows/deploy-pages.yml` publishes the `dist`
+folder whenever a commit is pushed to `main`.
+
+One-time setup on GitHub:
+
+1. Open **Settings → Pages** in this repository.
+2. Under **Build and deployment**, choose **GitHub Actions** as the source.
+
+The public site will be available at:
+
+https://sukritibhattarai.github.io/Personal-portfolio-website/
+
+For future updates, run these commands from the `aurasukriti-site` folder:
+
+```powershell
+git add .
+git commit -m "Update website"
+git push origin main
+```
+
+Do not run Git commands from the parent `digital sukriti website` folder.
+
 ## Connect the booking flow
 
-The website works immediately without third-party credentials:
+The website works immediately without private credentials:
 
 - Every primary CTA opens the consultation form on the Contact page.
-- The form validates the fields and opens the visitor's email app with the details pre-filled.
+- The form validates the fields and submits the request through FormSubmit.
 
-Before public launch, edit dist/assets/site.js:
+To connect a scheduling service, edit `dist/assets/site.js`:
 
-1. Replace hello@aurasukriti.digital with Sukriti's confirmed email address.
-2. To send every CTA directly to Calendly, Cal.com, or another scheduling service, paste the full booking URL into bookingUrl.
+1. To send every CTA directly to Calendly, Cal.com, or another scheduling service, paste the full booking URL into `bookingUrl`.
+2. Keep private API keys out of this repository.
 
 No API key is required for a booking-link integration. If you later connect a hosted form service, follow that provider's setup instructions and never commit private keys into this folder.
 
