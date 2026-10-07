@@ -34,6 +34,17 @@ git push origin main
 
 Do not run Git commands from the parent `digital sukriti website` folder.
 
+## Publish to Vercel
+
+Import this GitHub repository into Vercel with these settings:
+
+- Project name: `personal-portfolio-website`
+- Framework preset: `Other`
+- Root directory: `./`
+
+The committed `vercel.json` permanently configures `dist` as the output
+directory, so no build command or environment variables are required.
+
 ## Connect the booking flow
 
 The website works immediately without private credentials:
