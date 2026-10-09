@@ -44,7 +44,10 @@
       status.classList.remove("error");
       status.classList.add("show");
 
-      fetch("https://formsubmit.co/ajax/bhattaraisukriti71@gmail.com", {
+      var localPreview = ["localhost", "127.0.0.1", "[::1]"].indexOf(window.location.hostname) !== -1;
+      var formEndpoint = localPreview ? "/__formsubmit" : "https://formsubmit.co/ajax/bhattaraisukriti71@gmail.com";
+
+      fetch(formEndpoint, {
         method: "POST",
         headers: { Accept: "application/json" },
         body: new FormData(form)
