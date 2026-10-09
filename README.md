@@ -10,21 +10,11 @@ PowerShell example: python -m http.server 4173 --directory dist
 
 Then open http://localhost:4173.
 
-## Publish to GitHub Pages
+## Publish updates
 
-The workflow in `.github/workflows/deploy-pages.yml` publishes the `dist`
-folder whenever a commit is pushed to `main`.
-
-One-time setup on GitHub:
-
-1. Open **Settings → Pages** in this repository.
-2. Under **Build and deployment**, choose **GitHub Actions** as the source.
-
-The public site will be available at:
-
-https://sukritibhattarai.github.io/Personal-portfolio-website/
-
-For future updates, run these commands from the `aurasukriti-site` folder:
+Vercel deploys the `dist` folder automatically whenever a commit is pushed to
+`main`. For future updates, run these commands from the `aurasukriti-site`
+folder:
 
 ```powershell
 git add .
@@ -34,11 +24,11 @@ git push origin main
 
 Do not run Git commands from the parent `digital sukriti website` folder.
 
-## Publish to Vercel
+## Vercel configuration
 
 Import this GitHub repository into Vercel with these settings:
 
-- Project name: `personal-portfolio-website`
+- Project name: `sukriti-digital-portfolio`
 - Framework preset: `Other`
 - Root directory: `./`
 
